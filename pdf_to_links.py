@@ -14,7 +14,7 @@ for page in range(pages):
     pageSliced = PDF.getPage(page)
     page_content = pageSliced.extractText()
     #extracting the urls from the texts using regex
-    urls.append(re.findall(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', page_content.replace('\n', ' ').replace('\r', '')))
-
+    urls.append(re.findall(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', page_content.replace('\n', ' ')))
+    urls.append(re.findall(r'\S+@\S+', page_content.replace('\n','')))
     
 print(urls)
